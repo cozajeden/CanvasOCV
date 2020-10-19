@@ -76,9 +76,6 @@ if __name__ == "__main__":
                 ret, frame = self.cap.read()
                 self.canvas.set_imageOCV(frame)
 
-        def mainloop(self, *args, **kwargs):
-            super().mainloop(*args, **kwargs)
-
         def destroy(self):
             self.running = False
             self.cap.release()
