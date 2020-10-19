@@ -65,19 +65,16 @@ if __name__ == "__main__":
             self.frame.pack(fill=BOTH, expand=True)
             self.canvas = CanvasOCV(self.frame)
             self.canvas.pack(fill=BOTH, expand=True)
-            self.frame = None
-            self.running = True
             self.thread = Thread(name='camera', target=self.camera)
             self.thread.daemon = True
             self.thread.start()
             
         def camera(self):
-            while self.running:
+            while True:
                 ret, frame = self.cap.read()
                 self.canvas.set_imageOCV(frame)
 
         def destroy(self):
-            self.running = False
             self.cap.release()
             super().destroy()
 
