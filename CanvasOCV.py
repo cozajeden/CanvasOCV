@@ -4,14 +4,13 @@ from PIL import Image, ImageTk
 
 class CanvasOCV(Canvas):
 
-    def __init__(self, master, interval, *args, **kwargs):
+    def __init__(self, master, *args, **kwargs):
         super().__init__(master=master, *args, **kwargs)
         self.imageArray = None
         self.imageFromArray = None
         self.imageResized = None
         self.imageTk = None
         self.outputImage = None
-        self.interval = interval/1000
         self.bind('<Configure>', self.__redraw_canvas__)
 
     def set_imageOCV(self, image):
@@ -61,7 +60,6 @@ class CanvasOCV(Canvas):
 if __name__ == "__main__":
     # Example of use
     from threading import Thread
-    from time import sleep
 
     class MyTk(Tk):
         def __init__(self, *args, **kwargs):
@@ -69,7 +67,7 @@ if __name__ == "__main__":
             self.cap = cv.VideoCapture(0, cv.CAP_DSHOW)
             self.frame = Frame(self)
             self.frame.pack(fill=BOTH, expand=True)
-            self.canvas = CanvasOCV(self.frame, 5)
+            self.canvas = CanvasOCV(self.frame)
             self.canvas.pack(fill=BOTH, expand=True)
             self.frame = None
             self.running = True
@@ -81,7 +79,6 @@ if __name__ == "__main__":
             while self.running:
                 ret, frame = self.cap.read()
                 self.canvas.set_imageOCV(frame)
-                sleep(0.03)
 
         def mainloop(self, *args, **kwargs):
             super().mainloop(*args, **kwargs)
