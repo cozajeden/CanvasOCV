@@ -2,7 +2,7 @@
 Canvas widget for tkinter that displays images in numpy/OpenCV array format.
 
 ## Requirements
-**threaded is required only for example**
+**threaded is required only for an example**
 ```
 pip install Pillow numpy tk threaded opencv-python
 ```
