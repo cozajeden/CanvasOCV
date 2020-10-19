@@ -51,10 +51,6 @@ class CanvasOCV(Canvas):
                 self.delete(to_delete)
                 self.imageTk = image
                 # You can add other items to draw below.
-
-    def destroy(self):
-        self.running = False
-        super().destroy()
     
 
 if __name__ == "__main__":
