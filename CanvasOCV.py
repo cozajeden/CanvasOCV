@@ -59,6 +59,7 @@ class CanvasOCV(Canvas):
     
 
 if __name__ == "__main__":
+    # Example of use
     from threading import Thread
     from time import sleep
 
