@@ -14,7 +14,8 @@ class CanvasOCV(Canvas):
         self.bind('<Configure>', self.__redraw_canvas__)
 
     def set_imageOCV(self, image):
-        image = cv.cvtColor(image, cv.COLOR_BGR2RGB)
+        if len(image.shape) > 2:
+            image = cv.cvtColor(image, cv.COLOR_BGR2RGB)
         self.imageArray = image
         self.__from_array__()
         self.__redraw_canvas__()
